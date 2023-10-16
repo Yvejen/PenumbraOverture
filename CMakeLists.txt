@@ -1,6 +1,12 @@
 cmake_minimum_required (VERSION 2.6)
 project(Overture)
 
+set(CMAKE_C_FLAGS "-m32")
+set(CMAKE_CXX_FLAGS "-m32")
+set(FORCE32 1)
+
+find_package(GLEW REQUIRED)
+
 add_subdirectory(../OALWrapper ../OALWrapper)
 add_subdirectory(../HPL1Engine ../HPL1Engine)
 
@@ -10,6 +16,7 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/../OALWrapper/include
 )
 
+link_libraries(${GLEW_LIBRARIES})
 link_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/../dependencies/lib/linux)
 
